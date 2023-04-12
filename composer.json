@@ -1,0 +1,49 @@
+{
+    "name": "ahmedghanem00/tempnumber-api-client",
+    "description": "An API client for Temp-Number service ( https://temp-number.org/ )",
+    "type": "library",
+    "license": "MIT",
+
+    "keywords": [
+        "api-client",
+        "temporary phone number",
+        "disposable phone number"
+    ],
+
+    "authors": [
+        {
+            "name": "Ahmed Ghanem",
+            "email": "ahmedghanem7361@gmail.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "ahmedghanem00\\TempNumberClient\\": "src/"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "ahmedghanem00\\TempNumberClient\\Tests\\": "tests/"
+        }
+    },
+
+    "require": {
+        "php": ">=8.2",
+        "symfony/http-client": "6.*",
+        "doctrine/collections": "2.1.0"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "dev-main",
+        "phpstan/phpstan": "1.10.x-dev"
+    },
+
+    "scripts": {
+        "test": "@php vendor/bin/phpunit",
+        "phpstan": "@php vendor/bin/phpstan analyse src tests"
+    },
+
+    "minimum-stability": "dev"
+}
