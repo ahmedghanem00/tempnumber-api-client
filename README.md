@@ -33,7 +33,8 @@ try {
 #### Requesting new activation :
 
 ````php
-use ahmedghanem00\TempNumberClient\Enum\Country;use ahmedghanem00\TempNumberClient\Enum\Service;
+use ahmedghanem00\TempNumberClient\Enum\Country;
+use ahmedghanem00\TempNumberClient\Enum\Service;
 
 try {
     # You can either use Service & Country enums as arguments or use the ids directly ( 'facebook', 'us' )
@@ -137,3 +138,6 @@ foreach ($result->activations() as $activation) {
     echo $activation->getReceivedSMS();
 }
 ````
+
+
+##
