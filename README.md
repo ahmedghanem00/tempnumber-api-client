@@ -80,7 +80,7 @@ try {
     echo $activationData->getCreationTimestamp(); // int "1681333257"
     echo $activationData->getRemainingSecondsToExpire(); // int "300"
     echo $activationData->isRetryable(); // bool "false"
-    echo $activationData->getPhoneNumberWithoutCountryCode() // string "(555) 555-1234"
+    echo $activationData->getPhoneNumberWithoutCountryCode(); // string "(555) 555-1234"
 catch (Exception $e) {
     echo $e->getMessage();
 }
