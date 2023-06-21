@@ -8,17 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ahmedghanem00\TempNumberClient\Exception\Api;
+namespace ahmedghanem00\TempNumberClient\Exception\API;
 
-/**
- *
- */
-interface TemporaryExceptionInterface
+class GoneException extends APIException
 {
-
-    /**
-     * @return int Seconds to wait before making next retry
-     */
-    public function retryAfter(): int;
-
+    public const Description = "The target resource is no longer available";
 }

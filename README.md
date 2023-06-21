@@ -1,4 +1,4 @@
-# tempnumber-api-client
+# TempNumber Api Client
 
 An API client for Temp-Number service ( https://temp-number.org/ ) written in PHP.
 
@@ -7,7 +7,7 @@ If you encounter a bug or have an idea to improve the code, feel free to open an
 ## Installation
 
 ````
-$ Composer require ahmedghanem00/tempnumber-api-client
+$ composer require ahmedghanem00/tempnumber-api-client
 ````
 
 ## Usage
@@ -64,7 +64,7 @@ In case you have specific activation that needs to be retried
 
 ````php
 try {
-    $client->retryActivation($newActivation->getId());
+    $client->retryActivation(181822);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -139,5 +139,6 @@ foreach ($result->activations() as $activation) {
 }
 ````
 
+## LICENSE
 
-##
+Package is licensed under the [MIT License](http://opensource.org/licenses/MIT).

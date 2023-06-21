@@ -8,23 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace ahmedghanem00\TempNumberClient\Exception\Api;
-
-use ahmedghanem00\TempNumberClient\Exception\ClientException;
+namespace ahmedghanem00\TempNumberClient\Exception\API;
 
 /**
  *
  */
-class ServiceUnavailableException extends ApiException implements TemporaryExceptionInterface
+class ServiceUnavailableException extends APIException implements TemporaryErrorInterface
 {
-    /**
-     *
-     */
-    public function __construct()
-    {
-        ClientException::__construct('Service Unavailable');
-    }
-
     /**
      * @return int
      */

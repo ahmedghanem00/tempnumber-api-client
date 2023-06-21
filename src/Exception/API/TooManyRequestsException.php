@@ -8,14 +8,12 @@
  * file that was distributed with this source code.
  */
 
-namespace ahmedghanem00\TempNumberClient\Exception\Api;
+namespace ahmedghanem00\TempNumberClient\Exception\API;
 
-use ahmedghanem00\TempNumberClient\Exception\ClientException;
-
-class InvalidRequestParamsException extends ApiException
+class TooManyRequestsException extends APIException implements TemporaryErrorInterface
 {
-    public function __construct()
+    public function retryAfter(): int
     {
-        ClientException::__construct("Invalid request params");
+        return 0;
     }
 }

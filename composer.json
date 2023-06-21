@@ -45,5 +45,5 @@
         "phpstan": "@php vendor/bin/phpstan analyse src tests"
     },
 
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

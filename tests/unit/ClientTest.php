@@ -103,7 +103,7 @@ class ClientTest extends TestCase
             $this->client->retryActivation(7378322);
             $this->assertTrue(true);
         } catch (Exception $e) {
-            $this->fail($e->getMessage());
+            throw $e;
         }
     }
 
@@ -229,7 +229,7 @@ class ClientTest extends TestCase
         $this->client = new Client(getenv('API_KEY'), null, $backendServer);
 
         $this->client->applyHttpClientOptions([
-            #'proxy' => '127.0.0.1:9090', 'verify_peer' => false,
+            'proxy' => '127.0.0.1:9090', 'verify_peer' => false,
         ]);
     }
 }

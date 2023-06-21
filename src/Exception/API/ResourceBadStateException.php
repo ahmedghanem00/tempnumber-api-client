@@ -8,14 +8,18 @@
  * file that was distributed with this source code.
  */
 
-namespace ahmedghanem00\TempNumberClient\Exception\Api;
+namespace ahmedghanem00\TempNumberClient\Exception\API;
 
-use ahmedghanem00\TempNumberClient\Exception\ClientException;
-
-class AccountOnHoldException extends ApiException
+/**
+ *
+ */
+class ResourceBadStateException extends APIException implements TemporaryErrorInterface
 {
-    public function __construct()
+    /**
+     * @return int
+     */
+    public function retryAfter(): int
     {
-        ClientException::__construct("Account is in hold state");
+        return 10 * 60;
     }
 }
