@@ -14,19 +14,7 @@ use ahmedghanem00\TempNumberClient\Enum\ActivationStatus;
 use ahmedghanem00\TempNumberClient\Enum\Country;
 use ahmedghanem00\TempNumberClient\Enum\Service;
 use ahmedghanem00\TempNumberClient\Enum\TempNumberServer;
-use ahmedghanem00\TempNumberClient\Exception\Api\AccountOnHoldException;
-use ahmedghanem00\TempNumberClient\Exception\Api\ApiException;
-use ahmedghanem00\TempNumberClient\Exception\Api\ExpectedPriceException;
-use ahmedghanem00\TempNumberClient\Exception\Api\GoneException;
-use ahmedghanem00\TempNumberClient\Exception\Api\InvalidRequestParamsException;
-use ahmedghanem00\TempNumberClient\Exception\Api\LowSuccessRateException;
-use ahmedghanem00\TempNumberClient\Exception\Api\PaymentRequiredException;
-use ahmedghanem00\TempNumberClient\Exception\Api\ResourceBadStateException;
-use ahmedghanem00\TempNumberClient\Exception\Api\ResourceNotFoundException;
-use ahmedghanem00\TempNumberClient\Exception\Api\ServiceUnavailableException;
-use ahmedghanem00\TempNumberClient\Exception\Api\TooManyActivationsPendingException;
-use ahmedghanem00\TempNumberClient\Exception\Api\TooManyRequestsException;
-use ahmedghanem00\TempNumberClient\Exception\Api\UnauthorizedServiceException;
+use ahmedghanem00\TempNumberClient\Exception\API\APIException;
 use ahmedghanem00\TempNumberClient\Exception\ClientException;
 use ahmedghanem00\TempNumberClient\Result\ActivationHistoryResult;
 use ahmedghanem00\TempNumberClient\Result\ActivationResult;
@@ -162,39 +150,10 @@ class Client
         $resultData = $response->toArray(false);
 
         if (@$errorName = $resultData['errorName']) {
-            $this->handleApiError($errorName, $resultData, $response);
+            throw APIException::newFromErrorName($errorName, $response);
         }
 
         return $resultData;
-    }
-
-    /**
-     * @param string $errorName
-     * @param array $resultData
-     * @param ResponseInterface $response
-     * @return void
-     */
-    private function handleApiError(string $errorName, array $resultData, ResponseInterface $response): void
-    {
-        $exception = match ($errorName) {
-            'UnauthorizedException' => new UnauthorizedServiceException(),
-            'InvalidRequestParamsException' => new InvalidRequestParamsException(),
-            'paymentRequired' => new PaymentRequiredException(),
-            'AccountOnHoldException' => new AccountOnHoldException(),
-            'ResourceNotFoundException' => new ResourceNotFoundException(),
-            'ResourceBadStateException' => new ResourceBadStateException(),
-            'TooManyActivationsPendingException' => new TooManyActivationsPendingException(),
-            'TooManyRequestsException' => new TooManyRequestsException(),
-            'expectedPriceErrorException' => new ExpectedPriceException($resultData['newPrice']),
-            'GoneException' => new GoneException(),
-            'lowSuccessRateException' => new LowSuccessRateException(),
-            'ServiceUnavailableException' => new ServiceUnavailableException(),
-            default => new ApiException()
-        };
-
-        $exception->setResponse($response);
-
-        throw $exception;
     }
 
     /**

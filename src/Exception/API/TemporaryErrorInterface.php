@@ -8,20 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace ahmedghanem00\TempNumberClient\Exception\Api;
-
-use ahmedghanem00\TempNumberClient\Exception\ClientException;
+namespace ahmedghanem00\TempNumberClient\Exception\API;
 
 /**
  *
  */
-class ResourceNotFoundException extends ApiException
+interface TemporaryErrorInterface
 {
     /**
-     *
+     * @return int Seconds to wait before making next retry
      */
-    public function __construct()
-    {
-        ClientException::__construct("Resource not found");
-    }
+    public function retryAfter(): int;
 }

@@ -8,28 +8,21 @@
  * file that was distributed with this source code.
  */
 
-namespace ahmedghanem00\TempNumberClient\Exception\Api;
-
-use ahmedghanem00\TempNumberClient\Exception\ClientException;
+namespace ahmedghanem00\TempNumberClient\Exception\API;
 
 /**
  *
+ * Example: 100 activations requested for Whatsapp in Germany but only 1 activation got sms.
+ * This is 1% delivery success rate. No more activations allowed in 24 hours to Whatsapp in the Germany.
+ *
  */
-class ResourceBadStateException extends ApiException implements TemporaryExceptionInterface
+class LowSuccessRateException extends APIException implements TemporaryErrorInterface
 {
-    /**
-     *
-     */
-    public function __construct()
-    {
-        ClientException::__construct("Resource is in a bad state");
-    }
-
     /**
      * @return int
      */
     public function retryAfter(): int
     {
-        return 10 * 60;
+        return 24 * 60 * 60;
     }
 }

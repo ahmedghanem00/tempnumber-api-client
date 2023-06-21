@@ -20,6 +20,7 @@ class ClientException extends RuntimeException
     public function __construct(string $message = "", int $code = 0, Throwable $previous = null, array $additionalData = [])
     {
         $this->additionalData = $additionalData;
+
         parent::__construct($message, $code, $previous);
     }
 
