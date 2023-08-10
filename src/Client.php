@@ -53,6 +53,7 @@ class Client
      * @param TempNumberServer $backendServer
      */
     public function __construct(
+        #[\SensitiveParameter]
         string               $apiKey,
         ?HttpClientInterface $httpClient = null,
         TempNumberServer     $backendServer = TempNumberServer::Production
@@ -68,7 +69,7 @@ class Client
      * @param string $apiKey
      * @return void
      */
-    public function setApiKey(string $apiKey): void
+    public function setApiKey(#[\SensitiveParameter] string $apiKey): void
     {
         $this->applyHttpClientOptions([
             'headers' => [
