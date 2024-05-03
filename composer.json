@@ -30,19 +30,21 @@
     },
 
     "require": {
-        "php": ">=8.2",
-        "symfony/http-client": "6.* || 7.*",
-        "doctrine/collections": "2.*"
+        "php": "^8.2",
+        "symfony/http-client": "^6.0 || ^7.0",
+        "doctrine/collections": "^2.0"
     },
 
     "require-dev": {
         "phpunit/phpunit": "dev-main",
-        "phpstan/phpstan": "1.10.x-dev"
+        "phpstan/phpstan": "1.10.x-dev",
+        "friendsofphp/php-cs-fixer": "^3.54"
     },
 
     "scripts": {
-        "test": "@php vendor/bin/phpunit",
-        "phpstan": "@php vendor/bin/phpstan analyse src tests"
+        "styling": "@php vendor/bin/php-cs-fixer fix src",
+        "phpstan": "@php vendor/bin/phpstan analyse src tests",
+        "test": "@php vendor/bin/phpunit"
     },
 
     "minimum-stability": "stable"
