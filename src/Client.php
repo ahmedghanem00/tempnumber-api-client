@@ -79,7 +79,7 @@ class Client
     }
 
     /**
-     * @param array<string, string|array> $options
+     * @param array<string, string|array|int> $options
      * @return void
      */
     public function applyHttpClientOptions(array $options): void

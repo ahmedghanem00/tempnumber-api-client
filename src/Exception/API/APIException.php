@@ -40,7 +40,7 @@ class APIException extends ClientException
      * @param ResponseInterface $response
      * @return static
      */
-    public static function newFromErrorName(string $errorName, ResponseInterface $response): self
+    public static function newFromErrorName(string $errorName, ResponseInterface $response): static
     {
         $exceptionClass = match (strtolower($errorName)) {
             'unauthorizedexception' => UnauthorizedServiceException::class,

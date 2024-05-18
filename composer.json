@@ -42,9 +42,9 @@
     },
 
     "scripts": {
-        "styling": "@php vendor/bin/php-cs-fixer fix src",
-        "phpstan": "@php vendor/bin/phpstan analyse src tests",
-        "test": "@php vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit",
+        "phpstan": "vendor/bin/phpstan analyse",
+        "php-cs-fixer": "vendor/bin/php-cs-fixer fix"
     },
 
     "minimum-stability": "stable"
