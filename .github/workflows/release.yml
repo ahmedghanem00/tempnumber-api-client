@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "**"
+
+jobs:
+  create-release:
+    name: Create Release
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Determine tag
+        run: echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ env.RELEASE_TAG }}
+          name: v${{ env.RELEASE_TAG }}
+          generateReleaseNotes: true
+

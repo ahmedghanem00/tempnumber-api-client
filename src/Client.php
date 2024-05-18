@@ -1,4 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+/*
+ * This file is part of the TempNumberClient package.
+ *
+ * (c) Ahmed Ghanem <ahmedghanem7361@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 /*
  * This file is part of the TempNumberClient package.
  *
@@ -57,8 +67,7 @@ class Client
         string               $apiKey,
         ?HttpClientInterface $httpClient = null,
         TempNumberServer     $backendServer = TempNumberServer::Production
-    )
-    {
+    ) {
         $this->setHttpClient($httpClient ?? HttpClient::create());
         $this->setApiKey($apiKey);
         $this->setBackendServer($backendServer);
@@ -79,7 +88,7 @@ class Client
     }
 
     /**
-     * @param array<string, string|array> $options
+     * @param array<string, string|array|int> $options
      * @return void
      */
     public function applyHttpClientOptions(array $options): void

@@ -1,4 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+/*
+ * This file is part of the TempNumberClient package.
+ *
+ * (c) Ahmed Ghanem <ahmedghanem7361@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 /*
  * This file is part of the TempNumberClient package.
  *
@@ -15,6 +25,7 @@ use ahmedghanem00\TempNumberClient\Enum\Country;
 use ahmedghanem00\TempNumberClient\Enum\Service;
 use ahmedghanem00\TempNumberClient\Enum\TempNumberServer;
 use Exception;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
@@ -22,9 +33,7 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
-/**
- * @covers Client
- */
+#[CoversClass(Client::class)]
 class ClientTest extends TestCase
 {
     /**
@@ -33,8 +42,6 @@ class ClientTest extends TestCase
     private Client $client;
 
     /**
-     * @covers Client::retrieveBalance
-     *
      * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
      * @throws RedirectionExceptionInterface
@@ -99,12 +106,8 @@ class ClientTest extends TestCase
      */
     public function testRetryActivation()
     {
-        try {
-            $this->client->retryActivation(7378322);
-            $this->assertTrue(true);
-        } catch (Exception $e) {
-            throw $e;
-        }
+        $this->client->retryActivation(7378322);
+        $this->assertTrue(true);
     }
 
     /**
@@ -217,14 +220,9 @@ class ClientTest extends TestCase
         }
     }
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
-        $backendServer = current(array_filter(TempNumberServer::cases(), function ($case) {
-            return $case->name === getenv('BACKEND_SERVER');
-        }));
+        $backendServer = TempNumberServer::fromName(getenv('BACKEND_SERVER'));
 
         $this->client = new Client(getenv('API_KEY'), null, $backendServer);
 

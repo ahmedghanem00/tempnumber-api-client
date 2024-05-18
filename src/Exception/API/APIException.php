@@ -1,4 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+/*
+ * This file is part of the TempNumberClient package.
+ *
+ * (c) Ahmed Ghanem <ahmedghanem7361@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 /*
  * This file is part of the TempNumberClient package.
  *
@@ -30,8 +40,7 @@ class APIException extends ClientException
      */
     public function __construct(
         private ResponseInterface $response
-    )
-    {
+    ) {
         parent::__construct(static::Description);
     }
 
@@ -40,7 +49,7 @@ class APIException extends ClientException
      * @param ResponseInterface $response
      * @return static
      */
-    public static function newFromErrorName(string $errorName, ResponseInterface $response): self
+    public static function newFromErrorName(string $errorName, ResponseInterface $response): static
     {
         $exceptionClass = match (strtolower($errorName)) {
             'unauthorizedexception' => UnauthorizedServiceException::class,
