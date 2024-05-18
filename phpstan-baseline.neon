@@ -6,6 +6,6 @@ parameters:
 			path: src/Exception/API/APIException.php
 
 		-
-			message: "#^Property ahmedghanem00\\\\TempNumberClient\\\\Tests\\\\unit\\\\ClientTest\\:\\:\\$client is unused\\.$#"
-			count: 1
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 2
 			path: tests/Unit/ClientTest.php
