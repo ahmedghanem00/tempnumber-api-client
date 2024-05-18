@@ -1,9 +1,16 @@
 parameters:
-  ignoreErrors:
-    - message: "#^Method ahmedghanem00\\\\TempNumberClient\\\\Exception\\\\API\\\\APIException\\:\\:newFromErrorName\\(\\) should return static\\(ahmedghanem00\\\\TempNumberClient\\\\Exception\\\\API\\\\APIException\\) but returns ahmedghanem00\\\\TempNumberClient\\\\Exception\\\\API\\\\APIException\\.$#"
-      count: 1
-      path: src/Exception/API/APIException.php
+	ignoreErrors:
+		-
+			message: "#^Method ahmedghanem00\\\\TempNumberClient\\\\Exception\\\\API\\\\APIException\\:\\:newFromErrorName\\(\\) should return static\\(ahmedghanem00\\\\TempNumberClient\\\\Exception\\\\API\\\\APIException\\) but returns ahmedghanem00\\\\TempNumberClient\\\\Exception\\\\API\\\\APIException\\.$#"
+			count: 1
+			path: src/Exception/API/APIException.php
 
-    - message: "#^Unreachable statement \\- code above always terminates\\.$#"
-      count: 2
-      path: tests/unit/ClientTest.php
+		-
+			message: "#^Property ahmedghanem00\\\\TempNumberClient\\\\Tests\\\\unit\\\\ClientTest\\:\\:\\$client is unused\\.$#"
+			count: 1
+			path: tests/Unit/ClientTest.php
+
+		-
+			message: "#^Property ahmedghanem00\\\\TempNumberClient\\\\Tests\\\\unit\\\\ClientTest\\:\\:\\$client is unused\\.$#"
+			count: 1
+			path: tests/unit/ClientTest.php
