@@ -9,8 +9,3 @@ parameters:
 			message: "#^Property ahmedghanem00\\\\TempNumberClient\\\\Tests\\\\unit\\\\ClientTest\\:\\:\\$client is unused\\.$#"
 			count: 1
 			path: tests/Unit/ClientTest.php
-
-		-
-			message: "#^Property ahmedghanem00\\\\TempNumberClient\\\\Tests\\\\unit\\\\ClientTest\\:\\:\\$client is unused\\.$#"
-			count: 1
-			path: tests/unit/ClientTest.php
