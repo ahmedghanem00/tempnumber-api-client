@@ -16,7 +16,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - windows-latest
 
         php-version:
           - 8.2
@@ -38,11 +37,11 @@ jobs:
       - name: Run PHP-CS-Fixer in Linter Mode
         run: composer run-script php-cs-fixer -- --dry-run --show-progress=dots --using-cache=no --verbose
 
-      - name: Local PHP Security Checker
-        uses: docker://pplotka/local-php-security-checker-github-actions
-
       - name: Run PHPStan
         run: composer run-script phpstan
+
+      - name: Local PHP Security Checker
+        uses: docker://pplotka/local-php-security-checker-github-actions
 
       - name: Run test-suites
         run: composer run-script test
